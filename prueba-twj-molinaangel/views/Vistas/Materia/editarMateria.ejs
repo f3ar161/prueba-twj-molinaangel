@@ -1,0 +1,39 @@
+<h1>Editar Materia - <%= materiaAEditar.nombreMateria %></h1>
+
+
+<div class="row">
+  <div class="col-sm-5">
+
+    <form action="/Materia/EditarMateria" method="post">
+      <div class="form-group">
+        <label>Nombre materia</label>
+
+        <input type="text" class="form-control" placeholder="Ingrese el nombre de la materia" name="nombreMateria" value="<%= materiaAEditar.nombreMateria %>">
+
+
+      </div>
+      <div class="form-group">
+        <label>Topico de la materia</label>
+        <input type="text" class="form-control" placeholder="Ingrese el topico de la materia" name="topicoMateria" value="<%= materiaAEditar.topicoMateria %>">
+      </div>
+
+      <div class="form-group">
+        <label>fecha de creación </label>
+        <input type="date" class="form-control" placeholder="Ingrese la fecha de creacion" name="fechaCreacion" value="<%= materiaAEditar.fechaCreacion %>">
+
+        <input type="hidden" name="idMateria" value="<%= materiaAEditar.id %>">
+      </div>
+      <button type="submit" class="btn btn-success btn-block">Editar materia</button>
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+  <div class="col-sm-5 text-center">
+    <h2>Datos de la materia:</h2>
+    <h2>Tópico: <%= materiaAEditar.topicoMateria%></h2>
+    <h4>Nombre: <%= materiaAEditar.nombreMateria%></h4>
+    <p>Fecha de cración:
+      <%= materiaAEditar.fechaCreacion%>
+    </p>
+
+  </div>
+</div>

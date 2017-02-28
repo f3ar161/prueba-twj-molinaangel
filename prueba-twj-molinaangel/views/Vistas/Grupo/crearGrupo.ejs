@@ -1,0 +1,28 @@
+<h2>Crea una grupo</h2>
+<form action="/Grupo/CrearGrupo" method="post">
+
+  <div class="form-group">
+    <label>Nombre del grupo</label>
+    <input type="text" class="form-control" placeholder="Ingrese el nombre del grupo" name="nombreGrupo">
+  </div>
+
+  <div class="form-group">
+    <label>Número máximo de estudiantes</label>
+    <input type="number" class="form-control" placeholder="Ingrese el número máximo de estudiantes"  name="numeroMaximoEstudiantes">
+  </div>
+  <div class="form-group">
+  <label>Materias</label>
+  <% for(var i=0; i<materias.length; i++) {%>
+          <input disabled class="form-control" value="<%=materias[i].nombreMateria %>"  name="materias">
+    <button type="button" name="materias" value="<%materias[i].id%>"
+            onclick="disable=true" class="btn btn-info">Agregar</button>
+    <% } %>
+  </div>
+    <button type="submit" class="btn btn-success">Crear Grupo</button>
+</form>
+
+
+
+
+
+

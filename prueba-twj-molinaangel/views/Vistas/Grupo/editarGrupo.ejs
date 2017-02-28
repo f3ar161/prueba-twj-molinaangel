@@ -1,0 +1,35 @@
+<h1>Editar Grupo - <%= grupoAEditar.nombreGrupo %></h1>
+<div class="row">
+  <div class="col-sm-5">
+    <form action="/Grupo/EditarGrupo" method="post">
+      <div class="form-group">
+        <label>Nombre grupo</label>
+        <input type="text" class="form-control" placeholder="Ingrese el nombre del grupo" name="nombreGrupo" value="<%= grupoAEditar.nombreGrupo %>">
+      </div>
+      <div class="form-group">
+        <label>Número máximo de estudiantes</label>
+        <input type="number" class="form-control" placeholder="Ingrese el número máximo de estudiantes" name="numeroMaximoEstudiantes" value="<%= grupoAEditar.numeroMaximoEstudiantes %>">
+      </div>
+      <div class="form-group">
+        <label>Materias</label>
+        <% for(var i=0; i<grupoAEditar.materias.length; i++) {%>
+        <input disabled class="form-control" value="<%=grupoAEditar.materias[i].nombreMateria %>"  name="materias">
+        <button type="button" name="materias" value="<%grupoAEditar.materias[i].id%>"
+                onclick="disable=true" class="btn btn-info">Agregar</button>
+        <% } %>
+      </div>
+        <input type="hidden" name="idGrupo" value="<%= grupoAEditar.id %>">
+      <button type="submit" class="btn btn-success btn-block">Editar grupo</button>
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+  <div class="col-sm-5 text-center">
+    <h2>Datos de la materia:</h2>
+    <h2>Nombre: <%= grupoAEditar.nombreGrupo%></h2>
+    <h4>Número máximo de estudiantes: <%= grupoAEditar.numeroMaximoEstudiantes%></h4>
+    <p>Materias:
+      <%= grupoAEditar.materias.nombreMateria%>
+    </p>
+
+  </div>
+</div>
