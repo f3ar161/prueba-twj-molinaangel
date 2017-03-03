@@ -127,20 +127,33 @@ module.exports = {
             }
           });
         }
-        if(GrupoEncontrado){
-          return res.view("Vistas/Grupo/editarGrupo",{
-            grupoAEditar:GrupoEncontrado,
-            inicioSesion:true
-          });
-        }else{
-          return res.view('Vistas/Error', {
-            error: {
-              desripcion: "El grupo con id: "+parametros.id+" no existe.",
-              rawError: "No existe el grupo",
-              url: "/ListarGrupo"
+        Materia.find()
+          .exec(function (errorIndefinido, materiasEncontrados) {
+            if (errorIndefinido) {
+              res.view('Vistas/Error', {
+                error: {
+                  desripcion: "Hubo un problema cargando las materias",
+                  rawError: errorIndefinido,
+                  url: "/editarGrupo"
+                }
+              });
+            }
+            if(GrupoEncontrado){
+              return res.view("Vistas/Grupo/editarGrupo",{
+                grupoAEditar:GrupoEncontrado,
+                materias: materiasEncontrados,
+                inicioSesion:true
+              });
+            }else{
+              return res.view('Vistas/Error', {
+                error: {
+                  desripcion: "El grupo con id: "+parametros.id+" no existe.",
+                  rawError: "No existe el grupo",
+                  url: "/ListarGrupo"
+                }
+              });
             }
           });
-        }
       })
     } else {
       return res.view('Vistas/Error', {

@@ -18,22 +18,25 @@
   <div class="col-sm-1"></div>
   <div class="col-sm-4">
     <div class="text-center ma-borde ma-padding-top-bottom">
-      <h1> <%= grupos[i].nombreGrupo %></h1>
+      <h1> G : <%= grupos[i].nombreGrupo %></h1>
+      <input type="hidden" name="idGrupo" value="<%= grupos[i].idGrupo %>">
     </div>
   </div>
   <div class="col-sm-1"></div>
   <div class="col-sm-5 text-center">
     <div class="text-center ma-borde" style="margin-top: 40px;">
       <p>
-        <%= grupos[i].numeroMaximoEstudiantes %>
-        <%= grupos[i].nombreMateria %>
+        # Est: <%= grupos[i].numeroMaximoEstudiantes %>
+      </p>
+      <p>
+        M: <%= grupos[i].idMateria%>
+        <% console.log(grupos[i].idMateria) %>
       </p>
     </div>
   </div>
   <div class="col-sm-1">
     <a href="/Grupo/BorrarGrupo?id=<%= grupos[i].id %>" class="btn btn-danger btn-block">X</a>
     <a href="/EditarGrupo?id=<%= grupos[i].id %>" class="btn btn-info btn-block">Edit</a>
-
   </div>
 </div>
 <% }%>

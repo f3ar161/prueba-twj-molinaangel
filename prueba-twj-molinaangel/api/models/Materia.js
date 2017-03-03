@@ -22,7 +22,7 @@ module.exports = {
     },
     grupos: {
       model: 'Grupo',
-      required: false
+      via: 'idMateria'
     }
   }
 };

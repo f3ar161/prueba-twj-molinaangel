@@ -12,11 +12,14 @@
   </div>
   <div class="form-group">
   <label>Materias</label>
-  <% for(var i=0; i<materias.length; i++) {%>
-          <input disabled class="form-control" value="<%=materias[i].nombreMateria %>"  name="materias">
-    <button type="button" name="materias" value="<%materias[i].id%>"
-            onclick="disable=true" class="btn btn-info">Agregar</button>
-    <% } %>
+    <select class="selectpicker" multiple data-selected-text-format="count" name="idMateria">
+      <% for(var i=0; i<materias.length; i++) {%>
+      <option value="<%=materias[i].id%>">
+
+        <%=materias[i].nombreMateria %>
+      </option>
+      <% } %>
+    </select>
   </div>
     <button type="submit" class="btn btn-success">Crear Grupo</button>
 </form>

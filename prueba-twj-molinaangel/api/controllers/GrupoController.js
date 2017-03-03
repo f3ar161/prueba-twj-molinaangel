@@ -9,11 +9,14 @@ module.exports = {
   crearGrupo: function (req, res) {
     if (req.method == "POST") {
       var parametros = req.allParams();
-      if (parametros.nombreGrupo && parametros.numeroMaximoEstudiantes) {
+      if (parametros.nombreGrupo &&
+        parametros.numeroMaximoEstudiantes
+        && parametros.idMateria) {
+        sails.log(parametros.nombreGrupo+ " " +parametros.numeroMaximoEstudiantes +" materias: "+parametros.idMateria)
         var grupoCrear = {
           nombreGrupo: parametros.nombreGrupo,
           numeroMaximoEstudiantes: parametros.numeroMaximoEstudiantes,
-          materias: parametros.materias.id
+          idMateria: parametros.idMateria
         }
         if (grupoCrear.nombreGrupo == "") {
           delete grupoCrear.nombreGrupo
@@ -107,10 +110,12 @@ module.exports = {
   },
   editarGrupo: function (req, res) {
     var parametros = req.allParams();
-    if (parametros.idGrupo && (parametros.nombreGrupo || parametros.numeroMaximoEstudiantes || parametros.materias)) {
+    if (parametros.idGrupo && (parametros.nombreGrupo || parametros.numeroMaximoEstudiantes || parametros.idMateria)) {
+      sails.log(parametros.nombreGrupo+ " " +parametros.numeroMaximoEstudiantes +" materias id: "+parametros.idMateria)
       var grupoAEditar = {
         nombreGrupo: parametros.nombreGrupo,
-        numeroMaximoEstudiantes: parametros.numeroMaximoEstudiantes
+        numeroMaximoEstudiantes: parametros.numeroMaximoEstudiantes,
+        idMateria: parametros.idMateria
       }
       if (grupoAEditar.nombreGrupo == "") {
         delete grupoAEditar.nombreGrupo
@@ -118,8 +123,8 @@ module.exports = {
       if (grupoAEditar.numeroMaximoEstudiantes == "") {
         delete grupoAEditar.numeroMaximoEstudiantes
       }
-      if (grupoAEditar.materias == "") {
-        delete grupoAEditar.materias
+      if (grupoAEditar.idMateria == "") {
+        delete grupoAEditar.idMateria
       }
       Grupo.update({
         id: parametros.idGrupo

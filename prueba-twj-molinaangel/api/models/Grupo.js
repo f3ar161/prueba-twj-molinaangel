@@ -8,10 +8,9 @@
 module.exports = {
 
   attributes: {
-    materias:{
+    idMateria:{
       collection:'Materia',
-      via:'grupos'
-
+      required:true
   },
     nombreGrupo:{
       type:'string',
